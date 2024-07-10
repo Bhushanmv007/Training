@@ -35,6 +35,14 @@ int search(int arr[], int size, int element) {
     return -1;
 }
 
+void update(int arr[], int size, int element, int pos) {
+    if (pos >= 0 && pos < size) {
+        arr[pos] = element;
+    } else {
+        cout << "Invalid position!" << endl;
+    }
+}
+
 void display(int arr[], int size) {
     for (int i = 0; i < size; i++) {
         cout << arr[i] << " ";
@@ -46,7 +54,7 @@ int main() {
     int arr[MAX_SIZE], size = 0, choice, element, pos;
 
     while (true) {
-        cout << "\nMenu:\n1. Insert\n2. Delete\n3. Search\n4. Display\n5. Exit\nEnter your choice: ";
+        cout << "\nMenu:\n1. Insert\n2. Delete\n3. Search\n4. Update\n5. Display\n6. Exit\nEnter your choice: ";
         cin >> choice;
         switch (choice) {
             case 1:
@@ -70,9 +78,14 @@ int main() {
                 }
                 break;
             case 4:
-                display(arr, size);
+                cout << "Enter new element and position to update: ";
+                cin >> element >> pos;
+                update(arr, size, element, pos);
                 break;
             case 5:
+                display(arr, size);
+                break;
+            case 6:
                 return 0;
             default:
                 cout << "Invalid choice!" << endl;
