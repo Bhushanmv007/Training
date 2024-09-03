@@ -1,0 +1,21 @@
+/*searching algo 
+1. linear search
+2. binary search
+3. binary search with recursion
+4. jump search            |6LPA
+5. interpolation search   |6LPA
+*/
+
+/* SORT (ALL COMPARISON ALGO)
+BUBBLE SORT
+insertion sort
+selection sort
+merge sort
+quick sort
+shell sort
+heap sort
+
+NON COMPARISON ALGO
+- COUNT SORT
+- RADIX SORT
+*/
