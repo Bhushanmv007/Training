@@ -7,8 +7,9 @@ int main(){
       s.push(10);
       s.push(20);
       s.pop();
-      cout<<"The top elem is : " << s.top() <<endl;
+      
       if(s.empty()){
             cout<<"Stack is empty"<<endl;
       }
+      cout<<"The top elem is : " << s.top() <<endl;
 }
