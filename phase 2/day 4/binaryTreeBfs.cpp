@@ -1,4 +1,5 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 class Node {
@@ -19,6 +20,23 @@ Node *createNode(int val) {
     return n;
 }
 
+void BFS(Node* root) {
+    queue<Node*> q;
+    q.push(root);
+    while (!q.empty()) {
+        Node* current = q.front();
+        cout << current->data << " ";
+        if (current->left != NULL) {
+            q.push(current->left);
+        }
+        if (current->right != NULL) {
+            q.push(current->right);
+        }
+        q.pop();
+    }
+}
+
+    // In-order traversal
 void pre(Node* root) {
     if (root == NULL) {
         return;
@@ -72,5 +90,7 @@ int main() {
     in(root);
     cout << "\n The tree is created with post-order: \n";
     post(root);
+    cout << "\n The tree is created with BFS: \n";
+    BFS(root);
     return 0;
 }

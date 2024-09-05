@@ -1,0 +1,185 @@
+Heap Data Structures Notes:
+
+What is Heap Data Structure?
+    A heap is a binary tree-based data structure that satisfies the heap property: the value of each node is greater than or equal to the value of its children. This property makes sure that the root node contains the maximum or minimum value (depending on the type of heap), and the values decrease or increase as you move down the tree.
+
+          Max Heap 
+            100
+          /     \
+         40     50
+        /  \   /  \
+       10  15 50  40
+
+            and
+
+          Min Heap 
+            10
+          /     \
+         15     30
+        /  \   /  \
+       40  50 100 40
+
+
+Types of Heaps?
+    There are two main types of heaps:
+
+        Max Heap: The root node contains the maximum value, and the values decrease as you move down the tree.
+
+                          Max Heap 
+                             100
+                           /     \
+                          40     50
+                         /  \   /  \
+                        10  15 50  40
+        
+        Min Heap: The root node contains the minimum value, and the values increase as you move down the tree.
+
+
+                            Min Heap 
+                              10
+                            /     \
+                           15     30
+                          /  \   /  \
+                         40  50 100 40
+
+Heap Operations
+ Common heap operations are:
+
+    1) Insert: Adds a new element to the heap while maintaining the heap property.
+    2) Extract Max/Min: Removes the maximum or minimum element from the heap and returns it.
+    3) Heapify: Converts an arbitrary binary tree into a heap.
+
+
+
+Heap Data Structure Applications
+  Heaps have various applications, like:
+
+    1) Heaps are commonly used to implement priority queues, where elements are retrieved based on their priority (maximum or minimum value).
+    2) Heapsort is a sorting algorithm that uses a heap to sort an array in ascending or descending order.
+    3) Heaps are used in graph algorithms like Dijkstra’s algorithm and Prim’s algorithm for finding the shortest paths and minimum spanning trees.
+
+Properties of Heap:
+  Heap has the following Properties:
+    1) Complete Binary Tree: A heap tree is a complete binary tree, meaning all levels of the tree are fully filled except possibly the last level, which is filled from left to right. This property ensures that the tree is efficiently represented using an array.
+    
+    2) Heap Property: This property ensures that the minimum (or maximum) element is always at the root of the tree according to the heap type.
+    
+    3) Parent-Child Relationship: The relationship between a parent node at index ‘i’ and its children is given by the formulas: left child at index 2i+1 and right child at index 2i+2 for 0-based indexing of node numbers.
+    
+    4) Efficient Insertion and Removal: Insertion and removal operations in heap trees are efficient. New elements are inserted at the next available position in the bottom-rightmost level, and the heap property is restored by comparing the element with its parent and swapping if necessary. Removal of the root element involves replacing it with the last element and heapifying down.
+    
+    5) Efficient Access to Extrenal Elements: The minimum or maximum element is always at the root of the heap, allowing constant-time access.
+
+
+Operations Supported by Heap:
+
+  1) Heapify:
+    It is the process to rearrange the elements to maintain the property of heap data structure. It is done when a certain node creates an imbalance in the heap due to some operations on that node. It takes O(log N) to balance the tree. 
+
+    => For max-heap, it balances in such a way that the maximum element is the root of that binary tree and 
+    
+    =>For min-heap, it balances in such a way that the minimum element is the root of that binary tree.
+
+  
+  2) Insertion:
+    If we insert a new element into the heap since we are adding a new element into the heap so it will distort the properties of the heap so we need to perform the heapify operation so that it maintains the property of the heap.
+
+    This operation also takes O(logN) time.
+
+
+    Example:
+
+          8
+        /   \
+       4     5
+      / \
+     1   2
+
+    Now if we insert 10 into the heap
+            8
+          /   \
+         4     5
+       /  \   /
+      1    2 10 
+
+    After heapify operation final heap will be look like this
+           10
+         /   \
+        4     8
+      /  \   /
+     1    2 5
+
+
+  3) Deletion:
+    If we delete the element from the heap it always deletes the root element of the tree and replaces it with the last element of the tree.
+    
+    Since we delete the root element from the heap it will distort the properties of the heap so we need to perform heapify operations so that it maintains the property of the heap. 
+
+    It takes O(logN) time.
+
+  Example:
+
+  Assume initially heap(taking max-heap) is as follows
+         15
+        /  \
+       5    7
+     /  \
+    2    3
+
+  Now if we delete 15 into the heap it will be replaced by leaf node of the tree for temporary.
+           3
+         /   \
+        5     7
+       /    
+      2
+
+  After heapify operation final heap will be look like this
+           7
+         /   \
+        5     3
+       /   
+      2
+
+Note:
+  getMax (For max-heap) or getMin (For min-heap):
+    It finds the maximum element or minimum element for max-heap and min-heap respectively and as we know minimum and maximum elements will always be the root node itself for min-heap and max-heap respectively. It takes O(1) time.
+
+  removeMin or removeMax:
+    This operation returns and deletes the maximum element and minimum element from the max-heap and min-heap respectively. In short, it deletes the root element of the heap binary tree.
+
+
+Advantages of Heaps:
+  1) Fast access to maximum/minimum element (O(1))
+  2) Efficient Insertion and Deletion operations (O(log n))
+  3) Can be efficiently implemented as an array
+  4) Suitable for real-time applications
+
+Disadvantages of Heaps:
+  1) Not suitable for searching for an element other than maximum/minimum (O(n) in worst case)
+  2) Extra memory overhead to maintain heap structure
+  3) Slower than other data structures like arrays and linked lists for non-priority queue operations.
+
+
+
+Implementation of Heap Data Structure:-
+  The following code shows the implementation of a max-heap.
+
+  Let’s understand the maxHeapify function in detail:-
+
+  maxHeapify is the function responsible for restoring the property of the Max Heap. It arranges the node i, and its subtrees accordingly so that the heap property is maintained.
+
+    1) Suppose we are given an array, arr[] representing the complete binary tree. The left and the right child of ith node are in indices 2*i+1 and 2*i+2.
+
+    2) We set the index of the current element, i, as the ‘MAXIMUM’.
+
+    3) If arr[2 * i + 1] > arr[i], i.e., the left child is larger than the current value, it is set as ‘MAXIMUM’.
+
+    4) Similarly if arr[2 * i + 2] > arr[i], i.e., the right child is larger than the current value, it is set as ‘MAXIMUM’.
+
+    5) Swap the ‘MAXIMUM’ with the current element.
+
+    6) Repeat steps 2 to 5 till the property of the heap is restored.
+
+
+    My Link to Explaination of Implementation of Heaps:
+    https://chat.openai.com/share/cdd4d428-1a62-4f24-8912-4217a6982d3d
