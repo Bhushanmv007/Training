@@ -19,23 +19,33 @@ Node *createNode(int val) {
     return n;
 }
 
-void display(Node* root) {
+void pre(Node* root) {
     if (root == NULL) {
         return;
     }
     // Pre-order traversal
     cout << root->data << " ";
-    display(root->left);
-    display(root->right);
-    // In-order traversal
-    display(root->left);
-    cout << root->data << " ";
-    display(root->right);
-    // Post-order traversal
-    display(root->left);
-    display(root->right);
-    cout << root->data << " ";
+    pre(root->left);
+    pre(root->right);
+}
 
+    // In-order traversal
+void in(Node* root) {
+    if (root == NULL) {
+        return;
+    }    
+    in(root->left);
+    cout << root->data << " ";
+    in(root->right);
+}
+    // Post-order traversal
+void post(Node* root) {
+    if (root == NULL) {
+        return;
+    }    
+    post(root->left);
+    post(root->right);
+    cout << root->data << " ";
 }
 
 int main() {
@@ -57,7 +67,10 @@ int main() {
     root->left->left->left = createNode(10); // Left child for 4
 
     cout << "The tree is created with pre-order: \n";
-    display(root);
-    
+    pre(root);
+    cout << "\n The tree is created with in-order: \n";
+    in(root);
+    cout << "\n The tree is created with post-order: \n";
+    post(root);
     return 0;
 }
